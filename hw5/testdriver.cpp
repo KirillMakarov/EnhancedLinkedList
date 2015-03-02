@@ -15,46 +15,45 @@ int main (int argc, char* argv[]) {
     master.push_back ("three");
     master.push_back ("four");
     master.push_back ("five");
-	 EnhancedLinkedList<string> master2 = master.find_all("four");
- // {
- //   cout << "Find with empty list: This test should indicate not found exception" << endl;
- //   EnhancedLinkedList<string> l;
+  {
+    cout << "Find with empty list: This test should indicate not found exception" << endl;
+    EnhancedLinkedList<string> l;
 
- //   try {
- //     l.find_first("not there");
- //   }
- //   catch (logic_error& e) {
- //     cout << e.what() << endl;
- //   }
- //   cout << endl;
- // }
+    try {
+      l.find_first("not there");
+    }
+    catch (logic_error& e) {
+      cout << e.what() << endl;
+    }
+    cout << endl;
+  }
 
- // {
- //   cout << "Looking for non existent item: This test should indicate not found exception" << endl;
- //   EnhancedLinkedList<string> l(master);
- //  
- //   try {
- //     l.find_first("not there");
- //   }
- //   catch (logic_error& e) {
- //     cout << e.what() << endl;
- //   }
- //   cout << endl;
- // }
+  {
+    cout << "looking for non existent item: this test should indicate not found exception" << endl;
+    EnhancedLinkedList<string> l(master);
+   
+    try {
+      l.find_first("not there");
+    }
+    catch (logic_error& e) {
+      cout << e.what() << endl;
+    }
+    cout << endl;
+  }
 
- // {
- //   cout << "Looking for first item: This test should indicate found" << endl;
- //    EnhancedLinkedList<string> l(master);
+  {
+    cout << "Looking for first item: This test should indicate found" << endl;
+     EnhancedLinkedList<string> l(master);
 
- //   try {
- //     string got = l.find_first("one");
- //     cout << "found" << endl;
- //   }
- //   catch (logic_error& e) {
- //     cout << e.what() << endl;
- //   }
- //   cout << endl;
- // }
+    try {
+      string got = l.find_first("one");
+      cout << "found" << endl;
+    }
+    catch (logic_error& e) {
+      cout << e.what() << endl;
+    }
+    cout << endl;
+  }
 
  // /*
  //  * find last: find last item
@@ -231,7 +230,7 @@ int main (int argc, char* argv[]) {
  //   l.dump();
  // }
 
-
+system("pause");
   return EXIT_SUCCESS;
  
 }
