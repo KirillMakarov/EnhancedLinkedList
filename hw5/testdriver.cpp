@@ -9,14 +9,13 @@ using namespace std;
 
 int main (int argc, char* argv[]) {
 
- //   EnhancedLinkedList<string> master;
- //   master.push_back ("one");
- //   master.push_back ("two");
- //   master.push_back ("three");
- //   master.push_back ("four");
- //   master.push_back ("five");
-
-
+    EnhancedLinkedList<string> master;
+    master.push_back ("one");
+    master.push_back ("two");
+    master.push_back ("three");
+    master.push_back ("four");
+    master.push_back ("five");
+	 EnhancedLinkedList<string> master2 = master.find_all("four");
  // {
  //   cout << "Find with empty list: This test should indicate not found exception" << endl;
  //   EnhancedLinkedList<string> l;
