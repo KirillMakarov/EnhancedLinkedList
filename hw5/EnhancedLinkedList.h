@@ -16,6 +16,7 @@ public:
 	T& find_first (const T& key);
 	EnhancedLinkedList find_all (const T& key); 
 	void remove_first (const T& key); 
+	void remove_all (const T& key); 
 
 };
 
@@ -73,7 +74,7 @@ void EnhancedLinkedList<T>::remove_first (const T& key)
 	do
 	{
 		//Голова не удалена
-		//tempNext == head на 1 итерации
+		//tempNode == head на 1 итерации
 		if (tempNode->getNext()->getData() == key && tempNode->getNext() != LinkedList<T>::tail)
 		{
 			//tempNode->getNext() это элемент, который надо удалить и это не хвост и не голова.
@@ -94,6 +95,46 @@ void EnhancedLinkedList<T>::remove_first (const T& key)
 		LinkedList<T>::pop_back();
 		return;
 	}
+
+
+}
+
+template<class T>
+void EnhancedLinkedList<T>::remove_all (const T& key)
+{
+	Node<T>* tempNode = LinkedList<T>::head;
+
+	//Удаляем все элементы сначала, с поддержкой правильности головы
+	while (tempNode != nullptr && tempNode->getData() == key)
+	{
+		tempNode = tempNode -> getNext();
+		LinkedList<T>::pop_front();
+	}
+
+	//tempNode == LinkedList<T>::head && (tempNode == nullprt || tempNode->getValue() != key)
+
+	while (tempNode != LinkedList<T>::tail)
+	{
+		if (tempNode -> getNext() ->getData() == key&& tempNode->getNext() != LinkedList<T>::tail)
+		{
+			Node<T> * nodeForDelete = tempNode -> getNext();
+			tempNode->getNext() = nodeForDelete -> getNext();
+
+			delete nodeForDelete;
+			LinkedList<T>::count--;
+		}
+		else
+			tempNode = tempNode -> getNext();
+	}
+
+	//Проверяем хвост
+	if (tempNode!=nullptr && tempNode -> getData() == key)
+	{
+		LinkedList<T>::pop_back();
+		return;
+	}
+
+
 
 
 }

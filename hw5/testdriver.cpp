@@ -193,41 +193,56 @@ int main (int argc, char* argv[]) {
     }
     cout << endl;
   }
-///*
-//   * remove last item from list
-//   */
-// {
-//    cout << "Removing all on empty list: " << endl;
-//    EnhancedLinkedList<string> l;
-//
-//    l.remove_all("three");
-//    if (0 == l.size()) {
-//        cout << "success" << endl;
-//    } else {
-//        cout << "failure" << endl;
-//    }
-//    cout << endl;
-//  }
+/*
+   * remove last item from list
+   */
+ {
+    cout << "Removing all on empty list: " << endl;
+    EnhancedLinkedList<string> l;
 
- ///*
- //  * remove last item from list
- //  */
- //{
- //   cout << "Removing all on list, should print (one, two, three, four, five): " << endl;
- //   EnhancedLinkedList<string> l;
+    l.remove_all("three");
+    if (0 == l.size()) {
+        cout << "success" << endl;
+    } else {
+        cout << "failure" << endl;
+    }
+    cout << endl;
+  }
 
- //   l.push_back ("magic");
- //   l.push_back ("one");
- //   l.push_back ("two");
- //   l.push_back ("three");
- //   l.push_back ("magic");
- //   l.push_back ("four");
- //   l.push_back ("five");
- //   l.push_back ("magic");
- //  
- //   l.remove_all("magic");
- //   l.dump();
- // }
+ /*
+   * remove last item from list
+   */
+ {
+    cout << "removing all on list, should print (one, two, three, four, five): " << endl;
+   EnhancedLinkedList<string> l;
+
+    l.push_back ("magic");
+l.push_back ("magic");
+l.push_back ("magic");
+l.push_back ("magic");
+l.push_back ("magic");
+l.push_back ("magic");
+
+    l.push_back ("one");
+    l.push_back ("two");
+    l.push_back ("three");
+    l.push_back ("magic");l.push_back ("magic");
+l.push_back ("magic");
+l.push_back ("magic");
+l.push_back ("magic");
+l.push_back ("magic");
+l.push_back ("magic");
+
+	l.push_back("magic");
+    l.push_back ("four");
+    l.push_back ("five");
+    l.push_back ("magic");
+   l.push_back ("magic");
+l.push_back ("magic");
+
+    l.remove_all("magic");
+    l.dump();
+  }
 
 system("pause");
   return EXIT_SUCCESS;
