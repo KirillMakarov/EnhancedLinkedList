@@ -6,7 +6,7 @@ class  ListItemNotFoundException : public logic_error {
 
 public:
 	ListItemNotFoundException(const string& what_arg ) throw() :
-		logic_error ("Element is not find: " + what_arg) {}
+		logic_error ("Element is not found: " + what_arg) {}
 };
 
 
@@ -66,8 +66,9 @@ void EnhancedLinkedList<T>::remove_first (const T& key)
 
 	if (tempNode == nullptr)
 		return;
-	
-	if (tempNode->getData() == LinkedList<T>::head->getData())
+
+	//Проверяем голову
+	if (tempNode->getData() == key)
 	{
 		LinkedList<T>::pop_front();
 		return;
@@ -77,25 +78,27 @@ void EnhancedLinkedList<T>::remove_first (const T& key)
 	{
 		//Голова не удалена
 		//tempNext == head на 1 итерации
-		if (tempNode->getNext()->getData() == key)
+		if (tempNode->getNext()->getData() == key && tempNode->getNext() != LinkedList<T>::tail)
 		{
-			if (tempNode ->getNext() == LinkedList<T>::tail)
-			{
-				LinkedList<T>::pop_back();
-				return;
-			}
-
-			//tempNode->getNext() это элемент, который надо удалить и это не хвост с головой.
-
+			//tempNode->getNext() это элемент, который надо удалить и это не хвост и не голова.
 			Node<T> * nodeForDelete = tempNode->getNext();
-			temp->next = nodeForDelete ->getNext();
+			tempNode->getNext() = nodeForDelete ->getNext();
 
 			delete nodeForDelete;
-
+			LinkedList<T>::count--;
 			return;
 		}
 		tempNode = tempNode -> getNext();
 	}
-	while (tempNode != nullptr);
+	while (tempNode -> getNext() != nullptr);
+
+	//Проверяем хвост
+	if (tempNode -> getData() == key)
+	{
+		LinkedList<T>::pop_back();
+		return;
+	}
+
+
 }
 #endif
