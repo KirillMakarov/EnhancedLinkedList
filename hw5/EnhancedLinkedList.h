@@ -1,4 +1,4 @@
-#ifndef _ENHANCEDLINKEDLIST_H_
+п»ї#ifndef _ENHANCEDLINKEDLIST_H_
 #define _ENHANCEDLINKEDLIST_H_
 #include "LinkedList.h"
 
@@ -8,10 +8,6 @@ public:
 	ListItemNotFoundException(const string& what_arg ) throw() :
 		logic_error ("Element is not found: " + what_arg) {}
 };
-
-
-
-
 
 template <class T>
 class EnhancedLinkedList:public LinkedList<T> {
@@ -34,7 +30,7 @@ EnhancedLinkedList<T> EnhancedLinkedList<T>::find_all (const T& key) {
 	do
 	{
 		if (tempNode->getData() == key)
-			result -> push_back(key); //Почему после стрелки не отображаются методы LinkedList?
+			result -> push_back(key); //РџРѕС‡РµРјСѓ РїРѕСЃР»Рµ СЃС‚СЂРµР»РєРё РЅРµ РѕС‚РѕР±СЂР°Р¶Р°СЋС‚СЃСЏ РјРµС‚РѕРґС‹ LinkedList?
 		tempNode = tempNode -> getNext();
 	}
 	while (tempNode != nullptr);
@@ -67,7 +63,7 @@ void EnhancedLinkedList<T>::remove_first (const T& key)
 	if (tempNode == nullptr)
 		return;
 
-	//Проверяем голову
+	//РџСЂРѕРІРµСЂСЏРµРј РіРѕР»РѕРІСѓ
 	if (tempNode->getData() == key)
 	{
 		LinkedList<T>::pop_front();
@@ -76,11 +72,11 @@ void EnhancedLinkedList<T>::remove_first (const T& key)
 
 	do
 	{
-		//Голова не удалена
-		//tempNext == head на 1 итерации
+		//Р“РѕР»РѕРІР° РЅРµ СѓРґР°Р»РµРЅР°
+		//tempNext == head РЅР° 1 РёС‚РµСЂР°С†РёРё
 		if (tempNode->getNext()->getData() == key && tempNode->getNext() != LinkedList<T>::tail)
 		{
-			//tempNode->getNext() это элемент, который надо удалить и это не хвост и не голова.
+			//tempNode->getNext() СЌС‚Рѕ СЌР»РµРјРµРЅС‚, РєРѕС‚РѕСЂС‹Р№ РЅР°РґРѕ СѓРґР°Р»РёС‚СЊ Рё СЌС‚Рѕ РЅРµ С…РІРѕСЃС‚ Рё РЅРµ РіРѕР»РѕРІР°.
 			Node<T> * nodeForDelete = tempNode->getNext();
 			tempNode->getNext() = nodeForDelete ->getNext();
 
@@ -92,7 +88,7 @@ void EnhancedLinkedList<T>::remove_first (const T& key)
 	}
 	while (tempNode -> getNext() != nullptr);
 
-	//Проверяем хвост
+	//РџСЂРѕРІРµСЂСЏРµРј С…РІРѕСЃС‚
 	if (tempNode -> getData() == key)
 	{
 		LinkedList<T>::pop_back();
